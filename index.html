@@ -246,8 +246,10 @@
             const availableRaw = (chargeableHours / targetDecimal) - chargeableHours;
             
             // Round to nearest whole number
-            const availableHours = Math.round(availableRaw);
-
+            // const availableHours = Math.round(availableRaw);
+            // UPDATE: Use Math.floor to truncate down (e.g., 17.8 -> 17)
+            const availableHours = Math.floor(availableRaw);
+            
             // Formula: Leave = Total - Holiday - Chargeable - Available
             // Note: We use the rounded Available hours for the subtraction to keep the ledger clean
             const leaveRaw = totalHours - holidayHours - chargeableHours - availableHours;
